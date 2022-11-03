@@ -298,10 +298,10 @@ provide get (list) and post (create) methods.
             return jsonify(item.to_json())
 
     def register_api(app, model, url):
-        item = ItemAPI.as_view(f"{name}-item", model)
-        group = GroupAPI.as_view(f"{name}-group", model)
-        app.add_url_rule(f"/{name}/<int:id>", view_func=item)
-        app.add_url_rule(f"/{name}/", view_func=group)
+        item = ItemAPI.as_view(f"{url}-item", model)
+        group = GroupAPI.as_view(f"{url}-group", model)
+        app.add_url_rule(f"/{url}/<int:id>", view_func=item)
+        app.add_url_rule(f"/{url}/", view_func=group)
 
     register_api(app, User, "users")
     register_api(app, Story, "stories")
